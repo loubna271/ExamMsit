@@ -41,7 +41,6 @@ public class VideoService extends VideoServiceGrpc.VideoServiceImplBase {
     @Override
     public void uploadVideo(UploadVideoRequest request, StreamObserver<Video> responseObserver) {
         try {
-            // 1. Gérer le Creator (créer ou récupérer)
             Creator creatorEntity;
             org.example.lab.Creator protoCreator = request.getCreator();
 
@@ -59,7 +58,6 @@ public class VideoService extends VideoServiceGrpc.VideoServiceImplBase {
                     creatorEntity = creatorRepository.save(creatorEntity);
                 }
             } else {
-                // Si pas de creator dans la requête, créer un ID par défaut
                 creatorEntity = new Creator();
                 creatorEntity.setId(UUID.randomUUID().toString());
                 creatorEntity.setName("Unknown Creator");
@@ -67,7 +65,6 @@ public class VideoService extends VideoServiceGrpc.VideoServiceImplBase {
                 creatorEntity = creatorRepository.save(creatorEntity);
             }
 
-            // 2. Créer et sauvegarder la Video
             org.example.mediaserver.dao.entities.Video videoEntity = new org.example.mediaserver.dao.entities.Video();
             videoEntity.setId(UUID.randomUUID().toString());
             videoEntity.setTitle(request.getTitle());

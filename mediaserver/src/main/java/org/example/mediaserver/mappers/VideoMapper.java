@@ -2,8 +2,6 @@ package org.example.mediaserver.mappers;
 
 import org.example.lab.Creator;
 import org.example.lab.Video;
-import org.example.mediaserver.dto.VideoDto;
-import org.example.mediaserver.dto.VideoNewDto;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -53,5 +51,4 @@ public class VideoMapper {
         }
     }
 
-    // ... autres méthodes
 }
